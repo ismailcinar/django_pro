@@ -7,7 +7,7 @@
 	
 	<div class="all-title-box">
 		<div class="container text-center">
-			<h1>Blog Single<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+			<h1>{{course.name}}</h1>
 		</div>
 	</div>
 	
@@ -17,7 +17,7 @@
                 <div class="col-lg-9 blog-post-single">
                     <div class="blog-item">
 						<div class="image-blog">
-							<img src="images/blog_single.jpg" alt="" class="img-fluid">
+							<img src="{{course.image.url}}" alt="" class="img-fluid">
 						</div>
 						<div class="post-content">
 							<div class="post-date">
@@ -30,12 +30,12 @@
 								<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
 							</div>
 							<div class="blog-title">
-								<h2><a href="#" title="">perferendis doloribus asperiores.</a></h2>
+								<h2><a href="#" title="">{{course.name}}</a></h2>
 							</div>
 							<div class="blog-desc">
 								
 								<blockquote class="default">
-									Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque eget tempor tellus. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.
+									{{course.description}}
 								</blockquote>
 								
 							</div>							

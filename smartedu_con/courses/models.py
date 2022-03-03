@@ -10,6 +10,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50, null=True)
+    slug = models.SlugField(max_length=50, unique=True, null=True) #urldeki yer
+
+    def __str__(self):
+        return self.name
+
 class Course(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Kurs Adı", help_text="Kurs adını yazınız")
     category = models.ForeignKey(Category, null=True, on_delete=models.DO_NOTHING)
