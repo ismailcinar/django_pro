@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Category, Course, Tag
+from . models import  Category, Course, Tag 
 # Register your models here.
  
 #admin.site.register(Course)
@@ -16,4 +16,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    prepopulated_fields = { 'slug' : ('name',)}
+     prepopulated_fields = { 'slug' : ('name',)}
+
