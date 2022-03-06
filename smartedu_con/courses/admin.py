@@ -11,10 +11,9 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = { 'slug' : ('name',)}
-
+    prepopulated_fields={'slug':('name',)}
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-     prepopulated_fields = { 'slug' : ('name',)}
+    prepopulated_fields={'slug':('name',)}
 
