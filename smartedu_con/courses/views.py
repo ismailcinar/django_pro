@@ -19,7 +19,7 @@ from django.http import HttpResponse
 def course_list(request, category_slug=None, tag_slug=None):
     category_page = None
     tag_page = None
-    categories = categories =Category.objects.all()
+    categories = Category.objects.all()
     tags = Tag.objects.all()
 
     if category_slug != None:
@@ -39,6 +39,27 @@ def course_list(request, category_slug=None, tag_slug=None):
       }
     return render(request, 'courses.html', context)
 
+
+def course_detail(request, category_slug, course_id):
+    course = Course.objects.get(category__slug = category_slug, id = course_id)
+    
+    context = {
+           'course' : course
+    }
+    return render(request,'course.html', context)
+
+def search(request):
+    courses = Course.objects.filter(description__contains = request.GET['search'])
+    categories = Category.objects.all()
+    tags = Tag.objects.all()
+
+    context = {
+             'courses' : courses,
+             'categories' : categories,
+             'tags' : tags
+
+      }
+    return render(request,'courses.html', context)
 # def category_list(request, category_slug):
 #     courses = Course.objects.all().filter(category__slug = category_slug)
 #     categories = Category.objects.all()
@@ -63,12 +84,3 @@ def course_list(request, category_slug=None, tag_slug=None):
 
 #     }
 #     return render(request,'courses.html', context)
-
-def course_detail(request, category_slug, course_id):
-    course = Course.objects.get(category__slug = category_slug, id = course_id)
-    
-    contextt = {
-           'course' : course
-    }
-    return render(request,'course.html', contextt)
-
