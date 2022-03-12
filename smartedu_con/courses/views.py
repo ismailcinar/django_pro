@@ -1,4 +1,4 @@
-#from multiprocessing import context
+from multiprocessing import context
 from django.shortcuts import get_object_or_404, render
 from . models import Category, Course, Tag
 
@@ -32,12 +32,14 @@ def course_list(request, category_slug=None, tag_slug=None):
 
     else:
         courses = Course.objects.all().order_by('-date')
-        context = {
+        
+    context = {
         'courses': courses,
         'categories': categories,
-        'tags':tags
+        'tags': tags
       }
-    return render(request, 'courses.html', context)
+      
+    return render(request,'courses.html', context)
 
 
 def course_detail(request, category_slug, course_id):
