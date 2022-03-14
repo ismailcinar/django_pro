@@ -34,7 +34,13 @@ def user_login(request):
 
 
 def user_register(request):
-    return render(request, 'register.html')
+    form = RegisterForm
+        if request.method == 'POST':
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Account has been created, You can login')
+                return redirect('login')
 
 def user_logout(request):
     pass
