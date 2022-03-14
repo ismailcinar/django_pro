@@ -14,33 +14,38 @@ def user_login(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username,
-                                         password=password)
-            
+                                        password=password)
+
             if user is not None:
                 if user.is_active:
                     login(request, user)
                     return redirect('index')
-                
+
                 else:
                     messages.info(request, 'Disabled Account')
-            
+
             else:
-                messages.info(request, 'Check Your Usernama and password')
+                messages.info(request, 'Check Your Username and Password')
 
     else:
-        form = LoginForm
-    
-    return render(request, 'login.html', {'form': form})
+        form = LoginForm()
+
+    return render(request, 'login.html', {'form':form})
 
 
 def user_register(request):
-    form = RegisterForm
-        if request.method == 'POST':
-            form = RegisterForm(request.POST)
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'Account has been created, You can login')
-                return redirect('login')
+    
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Account has been created, You can LOGIN')
+            return redirect('login')
+    
+    else:
+        form = RegisterForm()
+
+    return render(request, 'register.html', {'form':form})
 
 def user_logout(request):
     pass
