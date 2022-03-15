@@ -21,13 +21,15 @@
 						</div>
 						<div class="post-content">
 							<div class="post-date">
-								<span class="day">30</span>
-								<span class="month">Nov</span>
+								{% if user.is_authenticated %}
+								<button type="submit" class="btn btn-outlinw-success rounded-0" data-toggle="modal" data target="#enrollModal">
+									<span>Enroll</span>
+								</button>
+								{% endif %}
 							</div>
 							<div class="meta-info-blog">
-								<span><i class="fa fa-calendar"></i> <a href="#">May 11, 2015</a> </span>
-								<span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
-								<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
+								<span><i class="fa fa-calendar"></i> {{course.date|date:" d M Y"}} </span>
+								<span><i class="fa fa-comments"></i> Students </a></span>
 							</div>
 							<div class="blog-title">
 								<h2><a href="#" title="">{{course.name}}</a></h2>
