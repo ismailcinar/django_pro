@@ -1,4 +1,4 @@
-"""drf_api URL Configuration
+"""haberbulteni URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -14,14 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-
-#from core.views import test_view
-from core.views import TestView
+from django.urls import path
 
 urlpatterns = [
-
-    path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
-    path('', TestView.as_view(), name="test")
 ]
