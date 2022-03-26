@@ -2,9 +2,15 @@ from django.db import models
 from django.forms import CharField
 
 # Create your models here.
+class Gazeteci(models.Model):
+    isim = models.CharField(max_length=120)
+    soyisim = models.CharField(max_length=120)
+    biyografi = models.TextField(blank=True, null=True)
 
+    def __str__(self):
+        return f'{self.isim} {self.soyisim}'
 class Makale(models.Model):
-    yazar = models.CharField(max_length=100)
+    yazar = models.ForeignKey(Gazeteci, on_delete=models.CASCADE, related_name='makaleler')
     baslik = models.CharField(max_length=100)
     aciklama = models.CharField(max_length=250)
     metin = models.TextField()
