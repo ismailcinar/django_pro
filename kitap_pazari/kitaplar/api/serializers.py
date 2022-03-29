@@ -2,6 +2,7 @@ from rest_framework import serializers
 from kitaplar.models import Kitap, Yorum
 
 class YorumSerializer(serializers.ModelSerializer):
+    yorum_sahibi = serializers.StringRelatedField(read_only=True)  # yorum sahibi id ile yazılıyordu bu kod ile isim soyismini çektik.
     class Meta:
         model = Yorum
         # fields = '__all__'
