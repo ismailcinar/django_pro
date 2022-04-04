@@ -38,7 +38,7 @@ class ProfilDurum(models.Model):
     guncellenme_zamani = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = 'ProfilDurum'
+        verbose_name_plural = 'Profil Mesajları'
 
     def __str__(self):
         return str(self.user_profil)
